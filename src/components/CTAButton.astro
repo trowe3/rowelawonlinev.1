@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+interface Props extends HTMLAttributes<'a'> {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'outline';
+  classes?: string;
+}
+const { href, variant = 'primary', classes = '', class: className, ...attributes } = Astro.props;
+const styles = {
+  primary: 'border-gold bg-gold text-onyx hover:border-gold-light hover:bg-gold-light',
+  secondary: 'border-gold bg-forest text-gold-light hover:bg-forest-light',
+  outline: 'border-forest bg-transparent text-forest hover:bg-forest hover:text-parchment',
+} as const;
+---
+<a href={href} class:list={['inline-flex min-h-12 items-center justify-center border px-6 py-3 text-center text-sm font-semibold leading-relaxed transition-colors', styles[variant], classes, className]} {...attributes}>
+  <slot />
+</a>

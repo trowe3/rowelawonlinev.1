@@ -1,0 +1,14 @@
+---
+interface Props { siteKey?: string; action?: 'legal-intake' | 'mediation-intake'; classes?: string; }
+const { siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || 'YOUR_CLOUDFLARE_TURNSTILE_SITE_KEY', action = 'legal-intake', classes = '' } = Astro.props;
+const configured = siteKey.trim().length > 0 && siteKey !== 'YOUR_CLOUDFLARE_TURNSTILE_SITE_KEY';
+---
+<div data-turnstile-wrapper data-configured={configured ? 'true' : 'false'} class:list={['min-h-20 max-w-full overflow-x-auto border border-dotted border-gold/60 bg-parchment p-3', classes]}>
+  <input type="hidden" name="cf-turnstile-response" value="" />
+  {configured ? <div data-turnstile-widget data-sitekey={siteKey} data-action={action}></div> : <template><div class="cf-turnstile" data-sitekey="YOUR_CLOUDFLARE_TURNSTILE_SITE_KEY"></div></template>}
+  <p data-verification-status role="status" class="text-sm leading-7 text-forest">{configured ? 'Loading secure verification…' : 'Verification will be available when secure intake opens.'}</p>
+</div>
+<script>
+  import { initTurnstile } from '../scripts/turnstile';
+  initTurnstile();
+</script>

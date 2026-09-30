@@ -1,0 +1,4 @@
+# Friendly aliases; Cloudflare Pages handles extension-less file URLs itself.
+/intake /contact 301
+/consultation /contact 301
+/virtual-mediation /mediation 301

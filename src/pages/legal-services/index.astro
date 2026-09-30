@@ -1,0 +1,41 @@
+---
+import LegalServiceLayout from '../../components/LegalServiceLayout.astro';
+interface DirectoryEntry { title: string; description: string; href: string; }
+const directory: readonly DirectoryEntry[] = [
+  { title: 'Family Law & Divorce', description: 'Guiding you through the emotional and financial complexities of dissolving a marriage with dignity.', href: '/legal-services/divorce-family-law' },
+  { title: 'Custody & Placement', description: 'Protecting your parental rights and crafting sustainable, child-first schedules.', href: '/legal-services/custody-placement' },
+  { title: 'Termination of Parental Rights (TPR) & Adoption', description: 'Helping families grow, heal, and secure their legal bonds (including confirmatory LGBTQ+ adoptions).', href: '/legal-services/tpr-adoption' },
+  { title: 'Guardian ad Litem Services', description: 'Court-appointed and stipulated best-interest advocacy for minors and vulnerable adults.', href: '/legal-services/guardian-ad-litem' },
+  { title: 'Adult & Minor Guardianships', description: 'Ensuring your vulnerable loved ones or minors are legally protected by trusted decision-makers.', href: '/legal-services/guardianships' },
+  { title: 'Estate Planning & Medicaid Planning', description: 'Draft Wills, Trusts, Powers of Attorney, and long-term care Medicaid strategies to protect your wealth, legacy, and home.', href: '/legal-services/estate-medicaid-planning' },
+  { title: 'Business Succession Planning', description: 'Structuring tax-efficient, smooth ownership transitions for family businesses, partnerships, and closely held companies.', href: '/legal-services/business-succession' },
+  { title: 'Real Estate Transactions', description: 'Smooth, professional contract reviews and legal guidance for buying, selling, or transferring property in Wisconsin.', href: '/legal-services/real-estate' },
+];
+const steps = [
+  { title: 'Remote Intake & Vault Upload', description: 'Begin remotely and organize your case documents for secure, encrypted client-vault upload.' },
+  { title: 'Video Strategy Session', description: 'Meet by secure video or phone to review your goals, documents, and available legal strategies.' },
+  { title: 'Virtual Advocacy & Resolution', description: 'Move forward with drafting and negotiation, plus virtual court representation when authorized by the court.' },
+];
+---
+<LegalServiceLayout title="Wisconsin Legal Services" description="Explore Wisconsin family law, custody, adoption, GAL services, guardianships, estate and Medicaid planning, business succession, and real estate legal counsel." canonicalPath="/legal-services" headline="Dedicated Legal Representation Throughout Wisconsin" subheadline="When you face a major life or business transition, you need an advocate who combines sharp legal strategy with practical convenience. At Rowe Law Office, LLC, we represent Wisconsin clients virtually via secure phone, email, and video. We guide you through complex legal waters without disrupting your daily schedule." isHub>
+  <section class="container-shell py-16 sm:py-24" aria-labelledby="directory-title">
+    <h2 id="directory-title" class="text-3xl text-forest sm:text-5xl">Wisconsin Practice Areas</h2>
+    <ul class="mt-10 grid gap-6 md:grid-cols-2">
+      {directory.map((area, index) => <li class="min-w-0">
+        <a href={area.href} class="group block h-full border border-forest/20 bg-white p-7 transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-1 hover:border-gold-dark hover:shadow-lg focus-visible:border-gold-dark sm:p-9">
+          <span aria-hidden="true" class="text-sm font-semibold tracking-widest text-forest/60">{String(index + 1).padStart(2, '0')}</span>
+          <h3 class="mt-5 text-2xl leading-snug text-forest sm:text-3xl group-hover:underline underline-offset-4">{area.title}</h3>
+          <p class="mt-5 text-base leading-8 text-onyx/75">{area.description}</p>
+        </a>
+      </li>)}
+    </ul>
+  </section>
+  <section class="border-y border-gold/30 bg-forest-dark py-16 text-parchment sm:py-24" aria-labelledby="process-title">
+    <div class="container-shell">
+      <h2 id="process-title" class="text-3xl sm:text-5xl">The Virtual Law Process</h2>
+      <ol class="mt-12 grid gap-6 lg:grid-cols-3">
+        {steps.map((step, index) => <li class="border-t-2 border-gold bg-forest p-7 sm:p-8"><span class="eyebrow text-gold-light">Step {index + 1}</span><h3 class="mt-5 text-2xl leading-snug">{step.title}</h3><p class="mt-5 text-base leading-8 text-parchment/80">{step.description}</p></li>)}
+      </ol>
+    </div>
+  </section>
+</LegalServiceLayout>

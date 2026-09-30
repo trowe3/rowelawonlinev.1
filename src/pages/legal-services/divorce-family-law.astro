@@ -1,0 +1,30 @@
+---
+import LegalServiceLayout from '../../components/LegalServiceLayout.astro';
+const pillars = [
+  { title: 'Property Division (Marital vs. Individual Property)', description: 'Wisconsin is a marital-property state. In divorce, divisible property generally starts with a 50/50 presumption under Wis. Stat. § 767.61; a court may depart from equal division after considering statutory factors. Gifts and inheritances are generally excluded, subject to exceptions such as hardship. Careful asset tracing and fair valuation of homes, retirement accounts, and business interests help inform a workable division.' },
+  { title: 'Maintenance (Spousal Support / Alimony)', description: 'Wisconsin does not apply a rigid maintenance formula. Courts evaluate factors such as marriage length, education, earning capacity, and contributions or career sacrifices that supported the other spouse. The amount and duration depend on the circumstances and the statutory factors.' },
+  { title: 'Child Support', description: 'Wisconsin’s percentage standards and placement-based calculations guide support determinations. Accurate income reporting and the court-ordered placement schedule are essential. Shared-placement and other special-circumstance rules may apply, and a court can deviate from the standards when legally justified.' },
+];
+const services = [
+  { title: 'Legal Separation', description: 'Resolve financial, support, and custody issues while remaining legally married.' },
+  { title: 'Paternity Actions', description: 'Establish legal fatherhood and address parental rights, custody, placement, and child support for unmarried parents.' },
+  { title: 'Post-Judgment Modifications', description: 'Evaluate court petitions when income, employment, or a child’s needs change significantly. The applicable legal standard depends on which part of the order needs to change.' },
+];
+const advantages = [
+  { title: 'Secure Document Vaults', description: 'Organize financial records and case materials through encrypted client uploads.' },
+  { title: 'Remote Strategy Conferences', description: 'Review asset spreadsheets, priorities, and proposed terms together by phone or secure video.' },
+  { title: 'Virtual Court Appearances', description: 'Receive representation at remote hearings on screen when the court permits or orders a virtual appearance. Some proceedings may require in-person attendance.' },
+];
+---
+<LegalServiceLayout title="Wisconsin Divorce & Family Law Attorney" description="Virtual Wisconsin divorce and family law counsel for property division, maintenance, child support, legal separation, paternity, and post-judgment modifications." canonicalPath="/legal-services/divorce-family-law" breadcrumbLabel="Family Law & Divorce" headline="Navigating Divorce with Clarity and Dignity" subheadline="Professional, virtual legal counsel to protect your financial future and family stability through Wisconsin's divorce process." ctaHeading="Plan your next chapter with clarity.">
+  <section class="container-shell py-16 sm:py-20" aria-labelledby="transition-title">
+    <div class="max-w-4xl"><h2 id="transition-title" class="text-3xl leading-tight text-forest sm:text-4xl">A Clear Path Through a Major Life Transition</h2><p class="mt-7 text-lg leading-9 text-onyx/80">Wisconsin is a no-fault divorce state: the legal ground is that the marriage is “irretrievably broken.” You do not need to prove that your spouse caused the breakup. Resolving assets, debt, support, and parenting arrangements still requires careful documentation and strategic planning.</p></div>
+  </section>
+  <section class="border-y border-forest/15 bg-forest/5 py-16 sm:py-20" aria-labelledby="pillars-title">
+    <div class="container-shell"><h2 id="pillars-title" class="max-w-4xl text-3xl leading-tight text-forest sm:text-4xl">The Three Core Pillars of a Wisconsin Divorce</h2>
+      <ol class="mt-10 grid gap-6 lg:grid-cols-3">{pillars.map((pillar, index) => <li class="border-t-2 border-gold bg-parchment p-7"><span class="eyebrow text-forest/65">{String(index + 1).padStart(2, '0')}</span><h3 class="mt-5 text-2xl leading-snug text-forest">{pillar.title}</h3><p class="mt-5 text-base leading-8 text-onyx/80">{pillar.description}</p></li>)}</ol>
+    </div>
+  </section>
+  <section class="container-shell py-16 sm:py-20" aria-labelledby="services-title"><h2 id="services-title" class="text-3xl text-forest sm:text-4xl">Comprehensive Family Law Services</h2><div class="mt-10 grid gap-6 lg:grid-cols-3">{services.map((service) => <article class="border border-forest/20 bg-white p-7"><h3 class="text-2xl text-forest">{service.title}</h3><p class="mt-5 text-base leading-8 text-onyx/80">{service.description}</p></article>)}</div></section>
+  <section class="border-y border-gold/30 bg-forest-dark py-16 text-parchment sm:py-20" aria-labelledby="advantage-title"><div class="container-shell"><h2 id="advantage-title" class="text-3xl sm:text-4xl">The Virtual Advantage for Your Peace of Mind</h2><div class="mt-10 grid gap-6 lg:grid-cols-3">{advantages.map((advantage) => <article class="border border-gold/30 bg-forest p-7"><h3 class="text-2xl text-gold-light">{advantage.title}</h3><p class="mt-5 text-base leading-8 text-parchment/80">{advantage.description}</p></article>)}</div></div></section>
+</LegalServiceLayout>

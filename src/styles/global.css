@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@config "../../tailwind.config.mjs";
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 8rem; }
+  body { @apply m-0 bg-parchment font-sans text-onyx antialiased; }
+  h1, h2, h3 { @apply font-serif; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  a, button, summary { -webkit-tap-highlight-color: transparent; }
+  button, summary { cursor: pointer; }
+  :focus-visible { outline: 3px solid #A88A60; outline-offset: 5px; }
+  ::selection { @apply bg-gold text-onyx; }
+  [hidden] { display: none !important; }
+}
+@layer components {
+  .container-shell { @apply mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-12; }
+  .eyebrow { @apply text-sm font-semibold tracking-[0.16em] uppercase; }
+  .nav-link { @apply inline-flex min-h-11 items-center text-sm text-parchment transition-colors hover:text-gold-light; }
+  .nav-link[aria-current="page"] { @apply text-gold-light underline decoration-gold/60 underline-offset-8; }
+  .footer-link { @apply inline-flex min-h-8 items-center text-sm leading-relaxed text-parchment/80 transition-colors hover:text-gold-light hover:underline; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

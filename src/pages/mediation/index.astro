@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+import CTAButton from '../../components/CTAButton.astro';
+const wisconsinCoverage: readonly string[] = ['Family Law disputes', 'Post-Judgment issues', 'Probate & Estate Administration', 'Small Claims', 'Guardianships', 'Real Estate/Civil disputes'];
+interface MediationStep { title: string; description: string; }
+const steps: readonly MediationStep[] = [
+  { title: 'Joint or Separate Online Scheduling', description: 'Request scheduling jointly or begin with a separate inquiry. After confirming the participants, scope, and suitability of mediation, arrange a session time and receive joining instructions.' },
+  { title: 'Secure Zoom/Video Joint Sessions and Private Breakout Rooms (Caucuses)', description: 'Meet remotely in a joint discussion and, when appropriate, private breakout rooms. Patrick facilitates constructive conversation and helps participants explore options while remaining neutral.' },
+  { title: 'Drafting the Mediated Agreement / Term Sheet', description: 'Record the terms the parties reach in a mediated agreement or term sheet. Participants may seek independent legal review; signatures, filing, and court approval follow the applicable rules. If no agreement is reached, the mediator does not impose a decision.' },
+];
+---
+<BaseLayout title="Virtual Mediation for Wisconsin & Florida Family Law" description="Patrick Rowe provides neutral virtual mediation for Wisconsin family, probate, civil and property disputes, and Florida family law matters. Explore the process." canonicalPath="/mediation">
+  <section class="mediation-hero border-b border-gold/40 bg-forest text-parchment" aria-labelledby="mediation-title">
+    <div class="container-shell py-10 sm:py-14">
+      <nav aria-label="Breadcrumb" class="mb-10 text-sm leading-7 text-gold-light"><ol class="flex flex-wrap items-center gap-3"><li><a href="/" class="hover:underline underline-offset-4">Home</a></li><li aria-hidden="true">/</li><li aria-current="page" class="text-parchment">Virtual Mediation</li></ol></nav>
+      <h1 id="mediation-title" class="max-w-4xl text-4xl leading-[1.15] sm:text-5xl lg:text-6xl">Find Common Ground. Avoid the Courtroom.</h1>
+      <p class="mt-7 max-w-4xl text-lg leading-8 text-parchment/85">Professional, 100% virtual mediation services for Wisconsin disputes and Florida family law matters.</p>
+    </div>
+  </section>
+  <div class="container-shell pt-10 sm:pt-14">
+    <aside aria-label="Crucial Disclaimer for Mediation Clients" class="border-2 border-gold bg-onyx p-7 text-parchment shadow-lg sm:p-9">
+      <p class="text-base leading-8 sm:text-lg sm:leading-9"><strong class="font-semibold text-gold-light">Crucial Disclaimer for Mediation Clients:</strong> Mediation is a neutral facilitation service. When acting as a mediator in Wisconsin or Florida, Patrick Rowe is <strong class="font-semibold text-gold-light">NOT</strong> acting as an attorney for either party and cannot provide legal advice to either participant.</p>
+    </aside>
+  </div>
+  <section class="container-shell py-16 sm:py-20" aria-labelledby="mediation-services-title">
+    <h2 id="mediation-services-title" class="text-3xl text-forest sm:text-4xl">Virtual Mediation Services</h2>
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      <article class="flex min-w-0 flex-col border border-forest/25 bg-white p-7 sm:p-9">
+        <h3 class="text-3xl leading-tight text-forest">Wisconsin Mediation Services</h3>
+        <p class="mt-6 text-base leading-8 text-onyx/80">Work toward peaceful resolution of disputes across Wisconsin, reducing litigation stress while keeping decisions in the parties’ hands.</p>
+        <ul class="my-7 grid gap-3 text-base leading-7 text-forest">{wisconsinCoverage.map((area) => <li class="flex gap-3"><span aria-hidden="true" class="text-gold-dark">✓</span>{area}</li>)}</ul>
+        <p class="mb-8 text-base leading-8 text-onyx/80">Mediation provides a setting for discussion and voluntary agreement. Matters involving court oversight, including guardianships or probate disputes, may require further court action or approval.</p>
+        <CTAButton href="/contact" variant="outline" classes="mt-auto w-full">Request Wisconsin Mediation</CTAButton>
+      </article>
+      <article class="flex min-w-0 flex-col border border-gold/60 bg-forest p-7 text-parchment sm:p-9">
+        <h3 class="text-3xl leading-tight">Florida Family Law Mediation</h3>
+        <p class="mt-6 text-base leading-8 text-parchment/85">Virtual mediation focused on Florida family law matters for Florida residents and out-of-state co-parents. Sessions address the issues the parties bring within Florida’s applicable family law framework.</p>
+        <div class="my-7 border-y border-gold/30 py-6"><h4 class="font-serif text-2xl text-gold-light">Fully remote participation</h4><p class="mt-4 text-base leading-8 text-parchment/85">Florida family mediation rules allow video participation through the applicable referral order, written party stipulation, or court authorization. Confirm the requirements for your case and circuit before scheduling; remote attendance is not automatically accepted in every matter.</p></div>
+        <p class="mb-8 text-base leading-8 text-parchment/85">Discuss options, clarify concerns, and develop a voluntary agreement without traveling to a shared office. Each participant may consult an independent attorney for advice on Florida law and proposed terms.</p>
+        <CTAButton href="/contact" classes="mt-auto w-full">Request Florida Family Mediation</CTAButton>
+      </article>
+    </div>
+  </section>
+  <section class="border-y border-forest/15 bg-forest/5 py-16 sm:py-24" aria-labelledby="mediation-process-title">
+    <div class="container-shell"><h2 id="mediation-process-title" class="text-3xl text-forest sm:text-4xl">How Virtual Mediation Works</h2><ol class="mt-10 grid gap-6 lg:grid-cols-3">{steps.map((step, index) => <li class="border-t-2 border-gold bg-parchment p-7 sm:p-8"><span class="eyebrow text-forest/65">Step {index + 1}</span><h3 class="mt-5 text-2xl leading-snug text-forest">{step.title}</h3><p class="mt-5 text-base leading-8 text-onyx/80">{step.description}</p></li>)}</ol></div>
+  </section>
+  <section class="container-shell py-16 sm:py-20" aria-labelledby="mediation-cta-title"><div class="grid items-center gap-8 border border-gold/50 bg-forest p-7 text-parchment sm:p-12 lg:grid-cols-[1fr_auto]"><div><h2 id="mediation-cta-title" class="text-3xl leading-tight sm:text-4xl">Start a conversation toward common ground.</h2><p class="mt-5 max-w-3xl text-base leading-8 text-parchment/80">Request virtual mediation for a Wisconsin dispute or Florida family law matter.</p></div><CTAButton href="/contact">Request a Mediation Session</CTAButton></div></section>
+</BaseLayout>
+<style>
+  .mediation-hero { background-image: radial-gradient(ellipse at top right, rgb(22 67 52 / 0.75), rgb(11 13 12 / 0.55)); }
+</style>

@@ -1,0 +1,41 @@
+---
+import LegalServiceLayout from '../../components/LegalServiceLayout.astro';
+interface PlanningFeature { title: string; description: string; }
+const estateComponents: readonly PlanningFeature[] = [
+  { title: 'Last Will and Testament', description: 'Direct the distribution of assets passing through your estate and nominate a guardian for minor children. A carefully drafted will documents your wishes; the court ultimately approves a guardian appointment.' },
+  { title: 'Revocable Living Trusts', description: 'Keep properly funded trust assets outside probate, preserve greater privacy, and support continuity of management during incapacity and after death. Assets must be transferred into the trust or otherwise coordinated with the plan. A revocable trust is not, by itself, Medicaid asset protection.' },
+  { title: 'Durable Power of Attorney (Financial)', description: 'Appoint a trusted agent to manage authorized financial affairs, including continuity if you become incapacitated. The document specifies the agent’s powers and when that authority takes effect.' },
+  { title: 'Healthcare Power of Attorney & Living Wills', description: 'Designate an agent for medical decisions when the healthcare power of attorney is activated, and document end-of-life instructions through a living will. These documents serve different, complementary purposes.' },
+];
+const strategies: readonly PlanningFeature[] = [
+  { title: 'Proactive Medicaid Asset Protection', description: 'Plan around Wisconsin’s five-year lookback for long-term care Medicaid transfers and divestments. Gifts or below-market transfers can create a benefit penalty. Review timing, ownership, and exceptions before moving assets.' },
+  { title: 'Crisis Medicaid Planning', description: 'When nursing home care is imminent, assess available spousal impoverishment protections, exempt transfers, and compliant promissory-note arrangements. Each option requires careful eligibility analysis; notes must satisfy specific repayment and actuarial requirements, and there is no universal emergency workaround.' },
+  { title: 'Irrevocable Asset Protection Trusts', description: 'Evaluate whether an appropriately structured and funded irrevocable trust can help plan for a home, family farm, or investments. Protection depends on trust terms, timing, retained rights, and the applicable Medicaid and estate-recovery rules. Irrevocability alone does not guarantee protection.' },
+  { title: 'Caregiver Agreements & Divestment Planning', description: 'Structure and document eligible intra-family care compensation with appropriate agreements, records, and reasonable payment terms. Payments to relatives can still be penalized if Wisconsin’s requirements are not met; a signed contract alone does not make every transfer compliant.' },
+];
+const remoteSteps: readonly PlanningFeature[] = [
+  { title: 'Review Your Circumstances', description: 'Discuss your family, assets, existing documents, and expected care needs by secure phone or video.' },
+  { title: 'Build a Coordinated Plan', description: 'Review Wisconsin Medicaid rules alongside your estate documents, property ownership, and financial priorities.' },
+  { title: 'Prepare for Implementation', description: 'Walk through the proposed documents and next steps remotely. Required signing, witnessing, notarization, and funding formalities still apply.' },
+];
+---
+<LegalServiceLayout title="Wisconsin Estate & Medicaid Planning Attorney" description="Virtual Wisconsin estate and long-term care planning for wills, trusts, powers of attorney, Medicaid lookback rules, crisis planning, and caregiver agreements." canonicalPath="/legal-services/estate-medicaid-planning" breadcrumbLabel="Estate & Medicaid Planning" headline="Secure Your Legacy & Protect Assets from Long-Term Care Costs" subheadline="Comprehensive estate planning and proactive Wisconsin Medicaid strategies—crafted securely from the comfort of your home." ctaHeading="Start planning for the people and assets you value.">
+  <section class="container-shell py-16 sm:py-24" aria-labelledby="estate-components-title">
+    <h2 id="estate-components-title" class="max-w-4xl text-3xl leading-tight text-forest sm:text-4xl">The Core Components of a Complete Estate Plan</h2>
+    <div class="mt-10 grid gap-6 md:grid-cols-2">{estateComponents.map((component) => <article class="border border-forest/20 bg-white p-7 sm:p-9"><h3 class="text-2xl leading-snug text-forest">{component.title}</h3><p class="mt-5 text-base leading-8 text-onyx/80">{component.description}</p></article>)}</div>
+  </section>
+  <section class="border-y border-gold/30 bg-forest-dark py-16 text-parchment sm:py-24" aria-labelledby="medicaid-title">
+    <div class="container-shell">
+      <h2 id="medicaid-title" class="max-w-4xl text-3xl leading-tight sm:text-4xl">Medicaid &amp; Long-Term Care Planning (Title 19)</h2>
+      <p class="mt-7 max-w-4xl text-lg leading-9 text-parchment/85">An extended nursing home stay in Wisconsin can impose substantial costs and deplete family savings. Advance planning helps you understand care funding, Medicaid eligibility, and the consequences of transferring property before a crisis limits your choices.</p>
+      <h3 class="mt-10 text-2xl text-gold-light">Four Critical Strategic Solutions</h3>
+      <ol class="mt-8 grid gap-6 md:grid-cols-2">{strategies.map((strategy, index) => <li class="border-t-2 border-gold bg-forest p-7 sm:p-9"><span class="eyebrow text-gold-light">{String(index + 1).padStart(2, '0')}</span><h4 class="mt-5 font-serif text-2xl leading-snug">{strategy.title}</h4><p class="mt-5 text-base leading-8 text-parchment/80">{strategy.description}</p></li>)}</ol>
+      <p class="mt-8 max-w-4xl border-l-2 border-gold pl-5 text-base leading-8 text-parchment/80">Medicaid eligibility and estate recovery are separate questions. Avoiding probate does not automatically prevent recovery, and no planning tool guarantees that every asset will be protected.</p>
+    </div>
+  </section>
+  <section class="container-shell py-16 sm:py-20" aria-labelledby="future-title">
+    <h2 id="future-title" class="text-3xl text-forest sm:text-4xl">Peace of Mind for Your Future</h2>
+    <p class="mt-7 max-w-4xl text-lg leading-9 text-onyx/80">Work through Wisconsin’s estate and Medicaid rules in remote consultations, with a clear explanation of the options relevant to your situation.</p>
+    <ol class="mt-10 grid gap-6 lg:grid-cols-3">{remoteSteps.map((step, index) => <li class="border-t-2 border-gold bg-white p-7"><span class="eyebrow text-forest/65">Step {index + 1}</span><h3 class="mt-5 text-2xl leading-snug text-forest">{step.title}</h3><p class="mt-5 text-base leading-8 text-onyx/80">{step.description}</p></li>)}</ol>
+  </section>
+</LegalServiceLayout>

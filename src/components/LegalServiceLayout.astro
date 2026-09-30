@@ -1,0 +1,45 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import CTAButton from './CTAButton.astro';
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  headline: string;
+  subheadline: string;
+  breadcrumbLabel?: string;
+  isHub?: boolean;
+  ctaHeading?: string;
+}
+const { title, description, canonicalPath, headline, subheadline, breadcrumbLabel = title, isHub = false, ctaHeading = 'Discuss your Wisconsin legal matter.' } = Astro.props;
+---
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath}>
+  <section class="service-hero border-b border-gold/40 bg-forest text-parchment" aria-labelledby="service-title">
+    <div class="container-shell py-10 sm:py-14">
+      <nav aria-label="Breadcrumb" class="mb-10 text-sm leading-7 text-gold-light">
+        <ol class="flex flex-wrap items-center gap-x-3 gap-y-1">
+          <li><a href="/" class="hover:underline underline-offset-4">Home</a></li>
+          <li aria-hidden="true">/</li>
+          {isHub ? <li aria-current="page">Wisconsin Legal Services</li> : <>
+            <li><a href="/legal-services" class="hover:underline underline-offset-4">Wisconsin Legal Services</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" class="text-parchment">{breadcrumbLabel}</li>
+          </>}
+        </ol>
+      </nav>
+      <h1 id="service-title" class="max-w-5xl text-4xl leading-[1.15] sm:text-5xl lg:text-6xl">{headline}</h1>
+      <p class="mt-7 max-w-4xl text-lg leading-8 text-parchment/85">{subheadline}</p>
+      {isHub && <CTAButton href="/contact" classes="mt-8">Request a Consultation</CTAButton>}
+    </div>
+  </section>
+  <slot />
+  <section class="container-shell py-16 sm:py-20" aria-labelledby="service-cta-title">
+    <div class="grid items-center gap-8 border border-gold/50 bg-forest p-7 text-parchment sm:p-12 lg:grid-cols-[1fr_auto]">
+      <div><h2 id="service-cta-title" class="text-3xl leading-tight sm:text-4xl">{ctaHeading}</h2><p class="mt-5 max-w-2xl text-base leading-8 text-parchment/80">Connect with Rowe Law Office, LLC by secure phone or video to discuss your situation and the next steps.</p></div>
+      <CTAButton href="/contact">Request a Consultation</CTAButton>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .service-hero { background-image: radial-gradient(ellipse at top right, rgb(22 67 52 / 0.75), rgb(11 13 12 / 0.55)); }
+</style>

@@ -1,0 +1,99 @@
+---
+import CTAButton from './CTAButton.astro';
+import { mainLinks, practiceAreas, isCurrent } from '../data/navigation';
+const pathname = Astro.url.pathname;
+---
+<header class="sticky top-0 z-40 border-b border-gold/50 bg-onyx text-parchment">
+  <div class="container-shell flex min-h-24 items-center justify-between gap-3 px-4 py-5 sm:gap-6 sm:px-10 lg:px-12">
+    <a href="/" aria-label="Rowe Law Office, LLC home" class="shrink-0">
+      <span class="block font-serif text-base tracking-[0.02em] sm:text-2xl">ROWE LAW OFFICE, LLC</span>
+      <span class="mt-2 block text-xs text-gold-light sm:text-sm sm:tracking-[0.09em]">Legal Counsel &amp; Virtual Mediation</span>
+    </a>
+    <div class="hidden xl:block"><CTAButton href="/contact">Book Virtual Consultation</CTAButton></div>
+    <button id="menu-open" type="button" class="inline-flex min-h-12 min-w-12 items-center justify-center border border-gold/60 text-gold-light xl:hidden" aria-label="Open navigation" aria-controls="mobile-menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+  </div>
+  <nav aria-label="Main navigation" class="hidden border-t border-parchment/10 bg-forest-dark xl:block">
+    <ul class="container-shell flex items-center gap-9 py-1">
+      {mainLinks.map((link) => (
+        <li class="relative flex items-center gap-2">
+          <a href={link.href} class="nav-link" aria-current={isCurrent(pathname, link.href) ? 'page' : undefined}>{link.label}</a>
+          {link.href === '/legal-services' && (
+            <details id="practice-dropdown" class="group">
+              <summary class="flex min-h-11 min-w-8 list-none items-center justify-center text-gold-light [&::-webkit-details-marker]:hidden" aria-label="Wisconsin practice areas">
+                <svg class="transition-transform group-open:rotate-180" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="m5 8 5 5 5-5" /></svg>
+              </summary>
+              <ul class="absolute top-full left-0 z-50 w-80 border border-gold/40 bg-forest-dark p-3 shadow-2xl">
+                {practiceAreas.map((area) => <li><a href={area.href} class="nav-link w-full px-3 py-2 hover:bg-forest-light" aria-current={isCurrent(pathname, area.href) ? 'page' : undefined}>{area.label}</a></li>)}
+              </ul>
+            </details>
+          )}
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+<dialog id="mobile-menu" aria-labelledby="mobile-menu-title" class="fixed inset-y-0 right-0 left-auto m-0 h-dvh max-h-dvh w-full max-w-md border-l border-gold/40 bg-forest-dark p-0 text-parchment shadow-2xl backdrop:bg-onyx/75">
+  <div class="flex min-h-full flex-col px-6 py-6">
+    <div class="mb-6 flex items-center justify-between gap-4 border-b border-gold/30 pb-6">
+      <h2 id="mobile-menu-title" class="text-2xl">Rowe Law Office</h2>
+      <button id="menu-close" type="button" aria-label="Close navigation" class="flex min-h-12 min-w-12 items-center justify-center border border-gold/50 text-gold-light" autofocus>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+      </button>
+    </div>
+    <nav aria-label="Mobile navigation">
+      <ul class="space-y-2">
+        {mainLinks.map((link) => <li>
+          <a href={link.href} class="nav-link min-h-12 text-base" aria-current={isCurrent(pathname, link.href) ? 'page' : undefined}>{link.label}</a>
+          {link.href === '/legal-services' && <details class="mb-4 border-l border-gold/40 pl-4">
+            <summary class="min-h-11 py-3 text-sm text-gold-light">Explore Wisconsin practice areas</summary>
+            <ul class="mt-1 space-y-1">
+              {practiceAreas.map((area) => <li><a href={area.href} class="nav-link min-h-11" aria-current={isCurrent(pathname, area.href) ? 'page' : undefined}>{area.label}</a></li>)}
+            </ul>
+          </details>}
+        </li>)}
+      </ul>
+    </nav>
+    <CTAButton href="/contact" classes="mt-8 w-full">Book Virtual Consultation</CTAButton>
+    <p class="mt-6 text-sm leading-relaxed text-parchment/65">Wisconsin legal representation.<br />Wisconsin &amp; Florida family law mediation.</p>
+  </div>
+</dialog>
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('#mobile-menu');
+  const openButton = document.querySelector<HTMLButtonElement>('#menu-open');
+  const closeButton = document.querySelector<HTMLButtonElement>('#menu-close');
+  const dropdown = document.querySelector<HTMLDetailsElement>('#practice-dropdown');
+  let previousOverflow = '';
+  openButton?.addEventListener('click', () => {
+    if (!dialog || dialog.open) return;
+    previousOverflow = document.documentElement.style.overflow;
+    dialog.showModal();
+    document.documentElement.style.overflow = 'hidden';
+    openButton.setAttribute('aria-expanded', 'true');
+  });
+  closeButton?.addEventListener('click', () => dialog?.close());
+  dialog?.addEventListener('close', () => {
+    document.documentElement.style.overflow = previousOverflow;
+    openButton?.setAttribute('aria-expanded', 'false');
+    if (openButton?.getClientRects().length) openButton.focus();
+  });
+  dialog?.addEventListener('click', (event) => {
+    const bounds = dialog.getBoundingClientRect();
+    if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
+  });
+  dialog?.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => link.addEventListener('click', () => dialog.close()));
+  window.matchMedia('(min-width: 80rem)').addEventListener('change', (event) => { if (event.matches && dialog?.open) dialog.close(); });
+  document.addEventListener('click', (event) => {
+    if (dropdown?.open && event.target instanceof Node && !dropdown.contains(event.target)) dropdown.open = false;
+  });
+  dropdown?.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && dropdown.open) {
+      dropdown.open = false;
+      dropdown.querySelector('summary')?.focus();
+    }
+  });
+  dropdown?.addEventListener('focusout', (event) => {
+    if (!(event.relatedTarget instanceof Node) || !dropdown.contains(event.relatedTarget)) dropdown.open = false;
+  });
+</script>

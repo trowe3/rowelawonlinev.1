@@ -1,0 +1,21 @@
+---
+interface Props {
+  aspectRatio?: 'square' | 'portrait' | 'landscape';
+  label: string;
+  subtext?: string;
+  classes?: string;
+}
+const { aspectRatio = 'landscape', label, subtext = 'Add photo to /public/images/', classes = '' } = Astro.props;
+const ratios = { square: 'aspect-square', portrait: 'aspect-[4/5]', landscape: 'aspect-[16/9]' } as const;
+---
+<figure class:list={['relative flex w-full flex-col items-center justify-center overflow-hidden border border-dotted border-gold/50 bg-gradient-to-br from-forest-light via-forest to-onyx p-8 text-center', ratios[aspectRatio], classes]}>
+  <svg class="mb-6 h-14 w-14 text-gold" width="56" height="56" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+    <path d="M24 7v32M15 40h18M10 16h28M12 16 6 29h12L12 16ZM36 16l-6 13h12L36 16Z" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="24" cy="10" r="3" />
+    <path d="M6 29c0 4 12 4 12 0M30 29c0 4 12 4 12 0" />
+  </svg>
+  <figcaption class="max-w-xs text-parchment">
+    <span class="block font-serif text-xl leading-snug">{label}</span>
+    {subtext && <span class="mt-3 block text-sm leading-relaxed text-parchment/70">{subtext}</span>}
+  </figcaption>
+</figure>
