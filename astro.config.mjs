@@ -3,10 +3,10 @@ import process from 'node:process';
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
-// Set PUBLIC_SITE_URL to the final HTTPS domain before production deployment.
-const site = process.env.PUBLIC_SITE_URL || process.env.CF_PAGES_URL;
+// Canonical/OpenGraph origin. PUBLIC_SITE_URL can override it (e.g. for a staging origin).
+const site = process.env.PUBLIC_SITE_URL || 'https://rowelawonline.com';
 export default defineConfig({
-  ...(site ? { site } : {}),
+  site,
   output: 'static',
   build: { format: 'file' },
   trailingSlash: 'never',

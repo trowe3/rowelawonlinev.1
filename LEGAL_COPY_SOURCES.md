@@ -28,7 +28,7 @@ Reviewed September 29, 2026. These references support the general educational ex
 
 ## Operational scope
 
-The secure document vault and remote intake descriptions are service-workflow copy requested in the brief. No vault, upload endpoint, video platform, booking system, or client authentication was implemented in this static site. The contact destination remains a scaffold. Configure the firm’s actual secure intake and client services before enabling those workflows.
+The secure document vault and remote intake descriptions are service-workflow copy requested in the brief. No vault, upload endpoint, video platform, booking system, or client authentication was implemented in this static site. The contact page has a complete frontend that stays in clearly labeled demo mode until an HTTPS intake endpoint and Turnstile site key are configured for each form; no intake backend exists yet. Configure the firm’s actual secure intake and client services before enabling those workflows.
 
 ## Prompt 4 references and qualifications
 

@@ -32,9 +32,9 @@ Development opens a local Astro server. `npm run check` validates TypeScript and
    | Build output directory | `dist` |
    | Node environment variable | `NODE_VERSION=24` |
 
-5. Set `PUBLIC_SITE_URL` to the final HTTPS production origin, such as your approved custom domain. Do not include a path. With no value, Pages builds can fall back to `CF_PAGES_URL`; local builds omit canonical/OpenGraph URLs rather than inventing a domain.
+5. Canonical/OpenGraph URLs default to `https://rowelawonline.com`. Set `PUBLIC_SITE_URL` (HTTPS origin, no path) only to override that, for example on a staging project.
 6. Save and deploy. Open the generated Pages URL and verify the homepage, `/contact`, `/legal-services`, the practice pages, `/mediation`, and the 404 page. Subsequent pushes to the production branch trigger new builds; other branches can generate previews.
-7. Add your custom domain through the Pages project's custom-domain settings, then update `PUBLIC_SITE_URL` and redeploy if needed. Set preview and production environment variables separately when they should differ.
+7. Add your custom domain through the Pages project's custom-domain settings, then redeploy if needed. Set preview and production environment variables separately when they should differ.
 
 Official guide: https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/
 
@@ -62,7 +62,7 @@ Copy `.env.example` to `.env` for local configuration, or set these values in Cl
 
 | Variable | Purpose |
 | --- | --- |
-| `PUBLIC_SITE_URL` | Production HTTPS origin for SEO URLs |
+| `PUBLIC_SITE_URL` | Optional override of the default `https://rowelawonline.com` SEO origin |
 | `PUBLIC_TURNSTILE_SITE_KEY` | Public widget key registered for your domain |
 | `PUBLIC_LEGAL_INTAKE_ENDPOINT` | HTTPS POST endpoint for Wisconsin legal intake |
 | `PUBLIC_MEDIATION_INTAKE_ENDPOINT` | HTTPS POST endpoint for neutral mediation intake |
