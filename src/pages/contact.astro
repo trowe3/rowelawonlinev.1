@@ -2,6 +2,7 @@
 import BaseLayout from '../components/BaseLayout.astro';
 import CTAButton from '../components/CTAButton.astro';
 import TurnstileWidget from '../components/TurnstileWidget.astro';
+import { officePhone } from '../data/navigation';
 function configuredURL(value: string | undefined): string {
   if (!value?.trim()) return '';
   const url = new URL(value);
@@ -24,6 +25,7 @@ const practiceAreas = ['Divorce/Family Law', 'Custody', 'Guardianship', 'Estate 
       <nav aria-label="Breadcrumb" class="mb-10 text-sm leading-7 text-gold-light"><ol class="flex flex-wrap gap-3"><li><a href="/" class="hover:underline underline-offset-4">Home</a></li><li aria-hidden="true">/</li><li aria-current="page">Contact &amp; Intake</li></ol></nav>
       <h1 id="contact-title" class="max-w-4xl text-4xl leading-[1.15] sm:text-5xl lg:text-6xl">Let’s Connect—Completely on Your Schedule</h1>
       <p class="mt-7 max-w-4xl text-lg leading-8 text-parchment/85">Please choose whether you are seeking Wisconsin legal representation or neutral virtual mediation in Wisconsin or Florida.</p>
+      <p class="mt-5 text-lg leading-8 text-parchment/85">Prefer to talk by phone? Call <a href={officePhone.href} class="font-semibold text-gold-light underline underline-offset-4 hover:text-gold">{officePhone.display}</a>.</p>
     </div>
   </section>
   <div class="container-shell py-12 sm:py-16">

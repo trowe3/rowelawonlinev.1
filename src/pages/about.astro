@@ -31,7 +31,7 @@ const values: readonly Feature[] = [
   <section aria-labelledby="profile-title" class="container-shell grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-[0.9fr_1.25fr] lg:gap-20">
     <div class="mx-auto w-full max-w-md lg:mx-0">
       <div class="border border-gold/65 p-3"><ImagePlaceholder aspectRatio="portrait" label="Patrick Rowe Professional Headshot" /></div>
-      <p class="mt-5 border-l-2 border-gold pl-4 text-sm font-medium leading-7 text-forest">Patrick Rowe, Esq. | Founder &amp; Virtual Dispute Specialist</p>
+      <p class="mt-5 border-l-2 border-gold pl-4 text-sm font-medium leading-7 text-forest">Patrick Rowe | Founder &amp; Virtual Dispute Specialist</p>
     </div>
     <div class="min-w-0">
       <h2 id="profile-title" class="text-3xl leading-tight text-forest sm:text-4xl">Meet Patrick Rowe</h2>
@@ -47,9 +47,8 @@ const values: readonly Feature[] = [
     <div class="container-shell">
       <h2 id="pillars-title" class="text-3xl leading-tight text-forest sm:text-5xl">The Multi-Dimensional Advantage</h2>
       <div class="mt-12 grid gap-6 lg:grid-cols-3">
-        {pillars.map((pillar, index) => <article class="min-w-0 border-t-2 border-gold bg-parchment p-7 sm:p-8">
-          <span aria-hidden="true" class="text-sm font-semibold tracking-widest text-forest/65">{String(index + 1).padStart(2, '0')}</span>
-          <h3 class="mt-6 text-2xl leading-snug text-forest">{pillar.title}</h3>
+        {pillars.map((pillar) => <article class="min-w-0 border-t-2 border-gold bg-parchment p-7 sm:p-8">
+          <h3 class="text-2xl leading-snug text-forest">{pillar.title}</h3>
           <p class="mt-5 text-base leading-8 text-onyx/75">{pillar.description}</p>
         </article>)}
       </div>

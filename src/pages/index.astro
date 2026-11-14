@@ -4,22 +4,18 @@ import CTAButton from '../components/CTAButton.astro';
 
 interface Feature { title: string; description: string; }
 interface PracticePreview extends Feature { href: string; }
-const badges: readonly string[] = [
-  '100% Virtual Consultations',
-  'Licensed in Wisconsin & Florida',
-  'Court-Appointed GAL',
-];
 const advantages: readonly Feature[] = [
   { title: 'Zero Travel, Zero Hassle', description: 'No driving to a downtown office or paying for parking. Meet securely via phone or high-definition video.' },
   { title: 'A Dual Perspective', description: 'As both an active Wisconsin litigator and an experienced mediator in two states, Patrick Rowe understands how courts view these issues—and how to help you avoid them.' },
   { title: 'Stress-Free Environment', description: 'Discuss sensitive family, estate, business, or property matters from a space where you feel completely comfortable.' },
 ];
 const practices: readonly PracticePreview[] = [
-  { title: 'Divorce', description: 'Legal representation and strategic negotiation for Wisconsin divorce matters.', href: '/legal-services/divorce-family-law' },
-  { title: 'Custody', description: 'Counsel for Wisconsin custody and placement matters involving your family.', href: '/legal-services/custody-placement' },
+  { title: 'Family Law', description: 'Representation and strategic negotiation for Wisconsin divorce, custody, and placement matters.', href: '/legal-services/divorce-family-law' },
   { title: 'Estate & Medicaid Planning', description: 'Strategic planning for your estate and future care needs.', href: '/legal-services/estate-medicaid-planning' },
   { title: 'Business Succession', description: 'Legal planning for the next chapter of your business.', href: '/legal-services/business-succession' },
   { title: 'Guardianships', description: 'Wisconsin legal counsel for guardianship matters.', href: '/legal-services/guardianships' },
+  { title: 'Real Estate', description: 'Contract review, document preparation, and title guidance for Wisconsin property.', href: '/legal-services/real-estate' },
+  { title: 'Adoption', description: 'Guidance through stepparent, relative, third-party, and confirmatory adoptions in Wisconsin.', href: '/legal-services/tpr-adoption' },
 ];
 const attorneyFeatures = ['Courtroom advocacy', 'Document drafting', 'Strategic negotiation', 'Virtual court appearances'];
 const mediatorFeatures = ['Neutral facilitation', '100% remote via secure video', 'Cost-effective', 'Voluntary resolution'];
@@ -36,17 +32,24 @@ const mediatorFeatures = ['Neutral facilitation', '100% remote via secure video'
     </div>
     <div class="container-shell py-20 sm:py-24 lg:py-28">
       <h1 id="hero-title" class="max-w-4xl text-4xl leading-[1.14] sm:text-6xl lg:text-7xl">Legal Resolution, Reimagined for Your Convenience.</h1>
-      <p class="mt-8 max-w-3xl text-lg leading-8 text-parchment/85 sm:text-xl sm:leading-9">Trusted Wisconsin legal representation and expert virtual family mediation in Wisconsin and Florida—handled entirely from the comfort of your home or office.</p>
-      <div class="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-start">
+      <p class="mt-8 max-w-3xl text-lg leading-8 text-parchment/85 sm:text-xl sm:leading-9">Trusted Wisconsin legal representation and virtual family mediation in Wisconsin and Florida—handled entirely from the comfort of your home or office.</p>
+      <div class="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-start">
         <CTAButton href="/contact">Book a Virtual Consultation</CTAButton>
-        <CTAButton href="/mediation" variant="secondary">Explore Mediation Services</CTAButton>
+        <CTAButton href="/legal-services" variant="secondary">Explore WI Legal Services</CTAButton>
+        <CTAButton href="/mediation" variant="secondary">Explore Mediation (WI &amp; FL Family)</CTAButton>
       </div>
-      <ul aria-label="Practice credentials and consultation format" class="mt-14 grid gap-5 border-t border-gold/25 pt-7 sm:flex sm:flex-wrap sm:gap-x-10 sm:gap-y-5">
-        {badges.map((badge) => <li class="flex items-center gap-3 text-sm font-medium text-gold-light">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="shrink-0" aria-hidden="true"><path d="m5 12 4 4L19 6" /><path d="M21 12v8H3V4h12" /></svg>
-          {badge}
-        </li>)}
-      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="advantage-title" class="border-y border-forest/15 bg-forest/5 py-16 sm:py-24">
+    <div class="container-shell">
+      <h2 id="advantage-title" class="text-3xl text-forest sm:text-5xl">Why Choose Rowe Law Office?</h2>
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        {advantages.map((feature) => <article class="border-t-2 border-gold bg-parchment p-7 sm:p-8">
+          <h3 class="text-2xl leading-tight text-forest sm:text-3xl">{feature.title}</h3>
+          <p class="mt-5 text-base leading-8 text-onyx/75">{feature.description}</p>
+        </article>)}
+      </div>
     </div>
   </section>
 
@@ -78,19 +81,6 @@ const mediatorFeatures = ['Neutral facilitation', '100% remote via secure video'
         </ul>
         <CTAButton href="/mediation" classes="mt-auto w-full">View Virtual Mediation</CTAButton>
       </article>
-    </div>
-  </section>
-
-  <section aria-labelledby="advantage-title" class="border-y border-forest/15 bg-forest/5 py-16 sm:py-24">
-    <div class="container-shell">
-      <h2 id="advantage-title" class="text-3xl text-forest sm:text-5xl">Why Choose Rowe Law Office?</h2>
-      <div class="mt-12 grid gap-6 lg:grid-cols-3">
-        {advantages.map((feature, index) => <article class="border-t-2 border-gold bg-parchment p-7 sm:p-8">
-          <span aria-hidden="true" class="text-sm font-semibold tracking-widest text-forest/65">{String(index + 1).padStart(2, '0')}</span>
-          <h3 class="mt-6 text-2xl leading-tight text-forest sm:text-3xl">{feature.title}</h3>
-          <p class="mt-5 text-base leading-8 text-onyx/75">{feature.description}</p>
-        </article>)}
-      </div>
     </div>
   </section>
 

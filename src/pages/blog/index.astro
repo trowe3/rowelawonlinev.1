@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+import CTAButton from '../../components/CTAButton.astro';
+---
+<BaseLayout title="Blog" description="Articles and insights on Wisconsin law and virtual mediation from Rowe Law Office, LLC are coming soon." canonicalPath="/blog">
+  <section class="blog-hero border-b border-gold/40 bg-forest text-parchment" aria-labelledby="blog-title">
+    <div class="container-shell py-10 sm:py-14">
+      <nav aria-label="Breadcrumb" class="mb-10 text-sm leading-7 text-gold-light"><ol class="flex flex-wrap items-center gap-3"><li><a href="/" class="hover:underline underline-offset-4">Home</a></li><li aria-hidden="true">/</li><li aria-current="page" class="text-parchment">Blog</li></ol></nav>
+      <p class="eyebrow text-gold-light">Coming Soon</p>
+      <h1 id="blog-title" class="mt-5 max-w-4xl text-4xl leading-[1.15] sm:text-5xl lg:text-6xl">Insights &amp; Updates</h1>
+      <p class="mt-7 max-w-3xl text-lg leading-8 text-parchment/85">Articles on Wisconsin family law, estate and business planning, real estate, and virtual mediation are on the way. Please check back soon.</p>
+    </div>
+  </section>
+  <section class="container-shell py-16 sm:py-20" aria-labelledby="blog-next-title">
+    <h2 id="blog-next-title" class="text-3xl text-forest sm:text-4xl">In the meantime</h2>
+    <div class="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-start">
+      <CTAButton href="/legal-services" variant="outline">Explore WI Legal Services</CTAButton>
+      <CTAButton href="/mediation" variant="outline">Explore Virtual Mediation</CTAButton>
+      <CTAButton href="/contact">Contact &amp; Intake</CTAButton>
+    </div>
+    <p class="mt-10 max-w-3xl text-sm leading-7 text-onyx/70">Future articles will provide general information only and will not be legal advice.</p>
+  </section>
+</BaseLayout>
+<style>
+  .blog-hero { background-image: radial-gradient(ellipse at top right, rgb(22 67 52 / 0.75), rgb(11 13 12 / 0.55)); }
+</style>

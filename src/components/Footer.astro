@@ -1,11 +1,11 @@
 ---
-import { practiceAreas } from '../data/navigation';
+import { practiceAreas, officePhone } from '../data/navigation';
 const year = new Date().getFullYear();
 ---
 <footer class="border-t border-gold/40 bg-forest-dark text-parchment">
   <div class="container-shell grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-[1.3fr_1.2fr_1fr_1fr]">
     <div>
-      <a href="/" class="font-serif text-2xl">Rowe Law Office, LLC</a>
+      <a href="/" class="flex items-center gap-3 font-serif text-2xl"><img src="/images/rowe-law-shield.png" alt="" width="274" height="320" class="h-14 w-auto shrink-0" loading="lazy" decoding="async" />Rowe Law Office, LLC</a>
       <p class="mt-4 text-sm font-semibold text-gold-light">Patrick Rowe<br />Attorney &amp; Mediator</p>
       <p class="mt-4 max-w-xs text-sm leading-7 text-parchment/75">A virtual practice providing Wisconsin legal representation and neutral mediation for Wisconsin disputes and Florida family law.</p>
     </div>
@@ -19,11 +19,13 @@ const year = new Date().getFullYear();
         <li><a class="footer-link" href="/mediation">Virtual Mediation (WI &amp; FL)</a></li>
         <li><a class="footer-link" href="/about">About Patrick Rowe</a></li>
         <li><a class="footer-link" href="/legal-services">Wisconsin Legal Services</a></li>
+        <li><a class="footer-link" href="/blog">Blog</a></li>
       </ul>
     </nav>
     <div>
       <h2 class="mb-4 font-sans text-sm font-semibold text-gold-light">Contact &amp; Appointments</h2>
       <ul class="space-y-2">
+        <li><a class="footer-link" href={officePhone.href}>Phone: {officePhone.display}</a></li>
         <li><a class="footer-link" href="/contact">Contact &amp; Intake</a></li>
         <li><a class="footer-link" href="/contact">Book Virtual Consultation</a></li>
       </ul>

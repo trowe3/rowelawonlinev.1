@@ -1,6 +1,6 @@
 # Rowe Law Office, LLC
 
-A responsive, fully static Astro + Tailwind CSS website prepared for Cloudflare Pages. Includes the homepage, About page, all eight Wisconsin practice pages, the Legal Services and Mediation hubs, dual-path Contact & Intake, and a custom 404 page. Shared components provide navigation, SEO, footer disclaimers, photography placeholders, buttons, and independent Turnstile widgets.
+A responsive, fully static Astro + Tailwind CSS website prepared for Cloudflare Pages. Includes the homepage, About page, all eight Wisconsin practice pages, the Legal Services and Mediation hubs, dual-path Contact & Intake, a Blog "Coming Soon" page, and a custom 404 page. Shared components provide navigation, SEO, footer disclaimers, photography placeholders, buttons, and independent Turnstile widgets.
 
 ## Development and build
 
@@ -116,6 +116,11 @@ Adjust the dimensions to match the source file. Retain the existing caption, com
 
 Legal and marketing descriptions follow the supplied brief; qualifications and official legal references are documented in `LEGAL_COPY_SOURCES.md`. Credential claims and by-appointment office hours should be confirmed against approved firm information before launch. Vaults and video conferencing described on service pages refer to the intended practice workflow; this website does not implement those systems.
 
+## Branding and shared settings
+
+- Shield logo: `public/images/rowe-law-shield.png` (header, mobile menu, footer, 404). Favicons: `public/favicon.ico`, `favicon-32.png`, `favicon-48.png`, `apple-touch-icon.png`.
+- Office phone and the mediation Google Form URL live in `src/data/navigation.ts` (`officePhone`, `mediationFormUrl`). Until `mediationFormUrl` is set to the real `https://` form link, mediation request buttons fall back to `/contact`; once set, they open the form in a new tab.
+
 ## Validation
 
-All 14 production pages build successfully. Astro component/type checks report zero errors, warnings, or hints. Earlier page checks covered widths 320, 375, 768, 1280, and 1440px, internal links, metadata, breadcrumbs, mobile navigation, and absence of horizontal overflow. The final contact checks cover responsive layout, required-field validation, isolated form states, demo confirmations, booking availability, and Florida dispute restrictions. Configured-build checks with simulated Cloudflare and intake APIs also confirmed one script load, two independent verification tokens, compact mobile widgets, expiration/error clearing, missing-verification blocking, duplicate-submit prevention, success/failure handling, and configured calendar links. All 13 unique internal navigation destinations resolved. Cloudflare headers/aliases and real intake delivery require verification in their deployment environments.
+The notes below describe the original 14-page build (before the Blog page was added); rerun `npm run check` and `npm run build` after changes. All 14 production pages built successfully. Astro component/type checks report zero errors, warnings, or hints. Earlier page checks covered widths 320, 375, 768, 1280, and 1440px, internal links, metadata, breadcrumbs, mobile navigation, and absence of horizontal overflow. The final contact checks cover responsive layout, required-field validation, isolated form states, demo confirmations, booking availability, and Florida dispute restrictions. Configured-build checks with simulated Cloudflare and intake APIs also confirmed one script load, two independent verification tokens, compact mobile widgets, expiration/error clearing, missing-verification blocking, duplicate-submit prevention, success/failure handling, and configured calendar links. All 13 unique internal navigation destinations resolved. Cloudflare headers/aliases and real intake delivery require verification in their deployment environments.
